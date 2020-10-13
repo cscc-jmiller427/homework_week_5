@@ -3,19 +3,21 @@
 ### 1 - Enter command for creation of pod_1.yml
 
 ```
-enter command here
+kubectl create -f pod_1.yml
 ```
 
 ### 2 - Enter command used to verify the pod_1.yml (describe or proxy with url)
 
 ```
-enter command here
+kubectl describe pod pod-nginx
+kubectl proxy
+curl http://127.0.0.1:8001/api/v1/namespaces/dev/pods/pod-nginx/proxy/
 ```
 
 ### 3 - Describe how the containers are working together after applying pod_2.yml
 
 ```
-enter answer here
+Within the same POD, one container is running a continious bash loop that is writing an HTML timestamp string to a file.  This file is written to a volume shared by both containers and can be seen via a HTTP server on the second container.
 ```
 
 ### 4 - What is the command used to add labels to the pod
