@@ -10,8 +10,7 @@ kubectl create -f pod_1.yml
 
 ```
 kubectl describe pod pod-nginx
-kubectl proxy
-curl http://127.0.0.1:8001/api/v1/namespaces/dev/pods/pod-nginx/proxy/
+kubectl proxy; curl http://127.0.0.1:8001/api/v1/namespaces/dev/pods/pod-nginx/proxy/
 ```
 
 ### 3 - Describe how the containers are working together after applying pod_2.yml

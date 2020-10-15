@@ -18,7 +18,7 @@ spec:
     - containerPort: 80
     volumeMounts:
     - name: html-content
-      mountPath: /user/share/nginx/html
+      mountPath: /usr/share/nginx/html
 
   - name: pod-content
     image: alpine:latest
