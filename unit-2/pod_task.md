@@ -46,11 +46,11 @@ kubectl get pods -l 'app_name in (nginx),env notin (prod)'
 ### 8 - What do you see and what is happening after exposing via ClusterIP?
 
 ```
-I see nothing because it's not load balencing like it should, my browser never changes from the nginx welcome page!
+It is load balencing, my browser changes from the nginx welcome page to the current time page on refreshes.
 ```
 
 ### 8 - What is happening? How is the nodeport behaving different? Why?
 
 ```
-It is using the 192.168.49.0\24 subnet; since I don't know much about this yet! I would imagine that is the clusters external IP?  I would imagine because I told it to without expressing an IP range, I have not read that chapter yet.
+It is using the 192.168.49.0\24 subnet; since I don't know much about this yet I would imagine that is the clusters external IP subnet.  It is also only showing the page for the labeled-pod since we used the env=dev selector in the YAML.
 ```
