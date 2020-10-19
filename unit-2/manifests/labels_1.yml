@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labeled-pod
+  labels:
+    app_name: nginx
+    env: dev
+spec:
+
+  volumes:
+  - name: html-content
+    emptyDir: {}
+
+  containers:
+  - name: nginx
+    image: nginx:stable-alpine
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: html-content
+      mountPath: /usr/share/nginx/html
+
+  - name: pod-content
+    image: alpine:latest
+    command: ["/bin/sh", "-c"]
+    args: ['while true; do echo "current time<br/>"$(date)"<br/>" >> /html/index.html; sleep 5; done']
+    volumeMounts:
+    - name: html-content
+      mountPath: /html

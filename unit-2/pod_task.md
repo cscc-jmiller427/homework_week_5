@@ -3,55 +3,54 @@
 ### 1 - Enter command for creation of pod_1.yml
 
 ```
-enter command here
+kubectl create -f pod_1.yml
 ```
 
 ### 2 - Enter command used to verify the pod_1.yml (describe or proxy with url)
 
 ```
-enter command here
+kubectl describe pod pod-nginx
+kubectl proxy; curl http://127.0.0.1:8001/api/v1/namespaces/dev/pods/pod-nginx/proxy/
 ```
 
 ### 3 - Describe how the containers are working together after applying pod_2.yml
 
 ```
-enter answer here
+Within the same POD, one container is running a continious bash loop that is writing an HTML timestamp string to a file.  This file is written to a volume shared by both containers and can be seen via a HTTP server on the second container.
 ```
 
 ### 4 - What is the command used to add labels to the pod
 
 ```
-enter command here
+kubectl label pods labeled-pod app_name=nginx env=dev
 ```
-
 
 ### 5 - What is the command used to remove labels from the pod
 
 ```
-enter command here
+kubectl label pods labeled-pod app_name- env-
 ```
 
 ### 6 - What is the command used to select pods using labels with equality
 
 ```
-enter command here
+kubectl get pods -l app_name==nginx
 ```
 
 ### 7 - What is the command used to select pods using the set selector
 
 ```
-enter command here
+kubectl get pods -l 'app_name in (nginx),env notin (prod)'
 ```
-
 
 ### 8 - What do you see and what is happening after exposing via ClusterIP?
 
 ```
-enter command here
+It is load balencing, my browser changes from the nginx welcome page to the current time page on refreshes.
 ```
 
 ### 8 - What is happening? How is the nodeport behaving different? Why?
 
 ```
-enter command here
+It is using the 192.168.49.0\24 subnet; since I don't know much about this yet I would imagine that is the clusters external IP subnet.  It is also only showing the page for the labeled-pod since we used the env=dev selector in the YAML.
 ```
